@@ -1,12 +1,23 @@
 import React from 'react';
 
+import Input from '../../UI/Input';
+import classes from './MealItemForm.module.css';
+
 const MealItemForm = () => {
-  return (<div>
-    <form>
-      <input type="number"></input>
-    </form>
+  return <form className={classes.form}>
+    <Input 
+      label="Amount" 
+      input={{
+        id: `amount${Math.random()}`,
+        type: 'number',
+        min: '1',
+        max: '5',
+        step: '1',
+        defaultValue: '1'
+        }}
+      />
     <button>+ Add</button>
-  </div>)
+  </form>
 };
 
 export default MealItemForm;
