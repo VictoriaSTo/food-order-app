@@ -8,7 +8,7 @@ const MealItemForm = () => {
     <Input 
       label="Amount" 
       input={{
-        id: `amount${Math.random()}`,
+        id: `amount_${Math.random()}`,
         type: 'number',
         min: '1',
         max: '5',
