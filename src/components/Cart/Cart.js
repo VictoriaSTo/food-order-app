@@ -11,8 +11,12 @@ const cartCtx = useContext(CartContext);
 const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 const hasItems = cartCtx.items.length > 0;
 
-const CartItemRemoveHandler = id => {};
-const cartItemAddHandler = item => {}; 
+const CartItemRemoveHandler = id => {
+  cartCtx.removeItem(id);
+};
+const cartItemAddHandler = item => {
+  cartCtx.addItem({...item, amount: 1});
+}; 
 
 const cartItems = <ul className={classes['cart-items']}>{cartCtx.items.map((meal) => (
 <CartItem 
@@ -21,9 +25,9 @@ const cartItems = <ul className={classes['cart-items']}>{cartCtx.items.map((meal
   amount={meal.amount} 
   price={meal.price}
   onRemove={CartItemRemoveHandler.bind(null, meal.id)}
-  onAdd={cartItemAddHandler}
+  onAdd={cartItemAddHandler.bind(null, meal)}
   />
-  ))};
+  ))}
 </ul>;
 
   return (
